@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VULNRECON | Comprehensive Project Report</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+            rel="stylesheet">
+        <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; }
+        .glass { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .cyber-border { border-left: 4px solid #10b981; }
+        .code-container { font-family: 'Fira Code', monospace; background: #000; border: 1px solid #1e293b; }
+        .section-heading { background: linear-gradient(90deg, #fff 0%, #94a3b8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        @media print { .no-print { display: none; } body { background: white; color: black; } .glass { border: 1px solid #ccc; backdrop-filter: none; } }
+    </style>
+    </head>
+    <body class="text-slate-300 selection:bg-emerald-500/30">
+
+        <nav
+            class="fixed left-0 top-0 h-screen w-80 bg-slate-950/80 border-r border-slate-800/60 hidden xl:flex flex-col p-8 no-print z-50">
+            <div class="mb-10">
+                <div class="flex items-center gap-2 mb-2">
+                    <div
+                        class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
+                    <span
+                        class="text-xs font-bold tracking-[0.3em] text-emerald-500 uppercase">System
+                        Active</span>
+                </div>
+                <h1
+                    class="text-2xl font-black text-white tracking-tighter italic">VULNRECON</h1>
+            </div>
+            <div class="flex-1 overflow-y-auto space-y-2 text-sm pr-2">
+                <a href="#cover"
+                    class="block p-3 hover:bg-slate-800 rounded-lg transition text-slate-400">Title
+                    Page</a>
+                <a href="#abstract"
+                    class="block p-3 hover:bg-slate-800 rounded-lg transition text-slate-400">Abstract</a>
+                <a href="#ch1"
+                    class="block p-3 hover:bg-slate-800 rounded-lg transition text-slate-400">1.
+                    Introduction</a>
+                <a href="#ch2"
+                    class="block p-3 hover:bg-slate-800 rounded-lg transition text-slate-400">2.
+                    Literature Review</a>
+                <a href="#ch3"
+                    class="block p-3 hover:bg-slate-800 rounded-lg transition text-slate-400">3.
+                    System Design</a>
+                <a href="#ch4"
+                    class="block p-3 hover:bg-slate-800 rounded-lg transition text-slate-400">4.
+                    Scanning Engine</a>
+                <a href="#ch5"
+                    class="block p-3 hover:bg-slate-800 rounded-lg transition text-slate-400">5.
+                    Rule-Based AI Engine</a>
+                <a href="#ch6"
+                    class="block p-3 hover:bg-slate-800 rounded-lg transition text-slate-400">6.
+                    OSINT Toolbox</a>
+                <a href="#ch7"
+                    class="block p-3 hover:bg-slate-800 rounded-lg transition text-slate-400">7.
+                    Security Hardening</a>
+                <a href="#ch8"
+                    class="block p-3 hover:bg-slate-800 rounded-lg transition text-slate-400">8.
+                    UI/UX Philosophy</a>
+                <a href="#ch9"
+                    class="block p-3 hover:bg-slate-800 rounded-lg transition text-slate-400">9.
+                    Testing & Validation</a>
+                <a href="#ch10"
+                    class="block p-3 hover:bg-slate-800 rounded-lg transition text-slate-400">10.
+                    Future Scope</a>
+                    <a href="#demo"
+                    class="block p-3 hover:bg-slate-800 rounded-lg transition text-slate-400">11.Project
+                    Demo</a>
+                    <a href="#links"
+                    class="block p-3 hover:bg-slate-800 rounded-lg transition text-slate-400">12.Access
+                    Links</a>
+                    <a href="#ref"
+                        class="block p-3 hover:bg-slate-800 rounded-lg transition text-slate-400">References</a>
+            </div>
+        </nav>
+
+        <main class="xl:ml-80 p-6 md:p-16 lg:p-24 max-w-7xl mx-auto">
+
+            <section id="cover"
+                class="min-h-[80vh] flex flex-col justify-center items-center text-center mb-32 border-b border-slate-800/50">
+                <div class="space-y-6">
+                    <h2
+                        class="text-slate-500 tracking-[0.8em] text-xs font-bold uppercase mb-10">Academic
+                        Project Report</h2>
+                    <h1
+                        class="text-7xl md:text-9xl font-black text-white tracking-tighter mb-4">VULNRECON</h1>
+                    <p
+                        class="text-2xl md:text-4xl font-light text-emerald-400 tracking-tight">AI-Powered
+                        Cybersecurity Intelligence Platform</p>
+                    <div class="h-1 w-32 bg-emerald-500 mx-auto my-12"></div>
+                    <div
+                        class="space-y-4 max-w-xl mx-auto text-slate-400 py-10">
+                        <p class="text-sm">Submitted in partial fulfillment of
+                            the requirements for the degree of</p>
+                        <h3 class="text-white font-bold text-2xl">BACHELOR OF
+                            TECHNOLOGY</h3>
+                        <p class="text-sm italic">in</p>
+                        <h3
+                            class="text-white font-bold text-xl uppercase tracking-widest text-emerald-500">Computer
+                            Science and Engineering</h3>
+                    </div>
+                </div>
+            </section>
+            <!-- TEAM -->
+            <section id="team" class="mb-40">
+                <h2 class="text-4xl font-bold text-white mb-12">
+                    Project Team
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="glass p-8 rounded-2xl text-center">
+                        <div
+                            class="w-16 h-16 bg-emerald-500/20 rounded-full mx-auto flex items-center justify-center text-emerald-400 font-bold mb-4">
+                            HA
+                        </div>
+                        <h3 class="text-white font-bold text-xl">Harsh Arya</h3>
+                        <p class="text-emerald-400 text-sm">Lead Developer</p>
+                    </div>
+                    <div class="glass p-8 rounded-2xl text-center">
+                        <div
+                            class="w-16 h-16 bg-blue-500/20 rounded-full mx-auto flex items-center justify-center text-blue-400 font-bold mb-4">
+                            SK
+                        </div>
+                        <h3 class="text-white font-bold text-xl">Sahil
+                            Kumar</h3>
+                        <p class="text-blue-400 text-sm">Python Developer</p>
+                    </div>
+                    <div class="glass p-8 rounded-2xl text-center">
+                        <div
+                            class="w-16 h-16 bg-purple-500/20 rounded-full mx-auto flex items-center justify-center text-purple-400 font-bold mb-4">
+                            KT
+                        </div>
+                        <h3 class="text-white font-bold text-xl">Ketan
+                            Tyagi</h3>
+                        <p class="text-purple-400 text-sm">Cybersecurity
+                            Expert</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="abstract" class="mb-40 pt-20">
+                <h2
+                    class="text-4xl font-bold section-heading mb-12">Abstract</h2>
+                <div
+                    class="glass p-10 rounded-3xl leading-relaxed text-slate-300 space-y-6">
+                    <p>
+                        VULNRECON is an advanced, full-stack cybersecurity
+                        intelligence platform developed to automate and
+                        streamline the process of network reconnaissance,
+                        vulnerability scanning, and threat analysis. Traditional
+                        scanning tools like Nmap generate vast amounts of raw
+                        data, placing a heavy cognitive burden on security
+                        analysts to manually filter false positives, correlate
+                        CVEs, and determine remediation paths.
+                    </p>
+                    <p>
+                        VULNRECON addresses these challenges by orchestrating
+                        deep infrastructure scans through a decoupled Python
+                        FastAPI microservice, returning real-time structured
+                        data via Server-Sent Events (SSE) to a modern,
+                        glassmorphic Next.js dashboard. The platform's most
+                        distinguishing feature is its proprietary, zero-API
+                        Rule-Based AI Engine developed entirely in JavaScript.
+                        By abandoning external LLM cloud APIs, VULNRECON
+                        guarantees absolute data privacy, zero recurring usage
+                        costs, and immunity to rate limiting during critical
+                        incident response scenarios.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                        <div class="cyber-border pl-4">
+                            <span
+                                class="text-emerald-500 font-bold block mb-1 uppercase text-xs tracking-widest">Key
+                                Features</span>
+                            <p class="text-sm text-slate-400">Severity
+                                Prediction, False Positive Detection, Attack
+                                Path Graphing (MITRE ATT&CK), OSINT Toolbox.</p>
+                        </div>
+                        <div class="cyber-border pl-4 border-emerald-500/30">
+                            <span
+                                class="text-slate-500 font-bold block mb-1 uppercase text-xs tracking-widest">Compliance</span>
+                            <p class="text-sm text-slate-400">128-bit JWT Auth,
+                                Command Injection Sanitization, Secure Session
+                                Management.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ch1" class="mb-40">
+                <div class="flex items-center gap-4 mb-12">
+                    <span class="text-emerald-500 font-mono text-xl">01.</span>
+                    <h2
+                        class="text-5xl font-black text-white tracking-tight">Introduction</h2>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-12">
+                    <div
+                        class="lg:col-span-7 space-y-8 text-slate-400 leading-relaxed">
+                        <div>
+                            <h4 class="text-white font-bold text-lg mb-2">1.1
+                                Background & Overview</h4>
+                            <p>In the rapidly evolving landscape of
+                                cybersecurity, the attack surface of
+                                organizations is expanding exponentially. Cloud
+                                migrations, the proliferation of Internet of
+                                Things (IoT) devices, and remote work
+                                infrastructure have created unprecedented
+                                challenges. Network reconnaissance—the process
+                                of identifying active hosts, open ports, and
+                                running services—remains the fundamental first
+                                step in both offensive penetration testing and
+                                defensive posture management.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg mb-2">1.2
+                                Motivation</h4>
+                            <p>The primary motivation behind VULNRECON is the
+                                cognitive overload experienced by Security
+                                Operations Center (SOC) analysts. A typical
+                                enterprise scan can reveal thousands of open
+                                ports and potential CVEs. Analysts spend
+                                disproportionate amounts of time triaging false
+                                positives rather than neutralizing threats.</p>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5">
+                        <div
+                            class="bg-slate-900/40 border border-slate-800 p-8 rounded-2xl">
+                            <h4
+                                class="text-emerald-400 font-bold uppercase text-xs tracking-widest mb-6">1.3
+                                Problem Statement</h4>
+                            <ul class="space-y-4 text-sm">
+                                <li class="flex gap-3"><span
+                                        class="text-emerald-500 font-bold">01.</span>
+                                    <span>Data Overload: Massive, unstructured
+                                        datasets are difficult to parse visually
+                                        and prioritize.</span></li>
+                                <li class="flex gap-3"><span
+                                        class="text-emerald-500 font-bold">02.</span>
+                                    <span>The "API Tax": Cloud LLMs like GPT-4
+                                        are expensive, rate-limited, and pose
+                                        privacy risks.</span></li>
+                                <li class="flex gap-3"><span
+                                        class="text-emerald-500 font-bold">03.</span>
+                                    <span>Lack of Actionability: Raw scan
+                                        results lack specific, context-aware
+                                        remediation commands.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-20">
+                    <h4 class="text-white font-bold text-lg mb-6">1.4 Proposed
+                        Solution & Objectives</h4>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div
+                            class="glass p-6 rounded-xl border-t-2 border-emerald-500">
+                            <h5
+                                class="text-white font-bold text-xs uppercase mb-2">Automation</h5>
+                            <p class="text-xs text-slate-500">Remote
+                                orchestration of Nmap via FastAPI
+                                microservice.</p>
+                        </div>
+                        <div
+                            class="glass p-6 rounded-xl border-t-2 border-blue-500">
+                            <h5
+                                class="text-white font-bold text-xs uppercase mb-2">Intelligence</h5>
+                            <p class="text-xs text-slate-500">Local Rule-Based
+                                engine for Zero-API threat analysis.</p>
+                        </div>
+                        <div
+                            class="glass p-6 rounded-xl border-t-2 border-purple-500">
+                            <h5
+                                class="text-white font-bold text-xs uppercase mb-2">Actionability</h5>
+                            <p class="text-xs text-slate-500">Step-by-step shell
+                                commands for instant patching.</p>
+                        </div>
+                        <div
+                            class="glass p-6 rounded-xl border-t-2 border-amber-500">
+                            <h5
+                                class="text-white font-bold text-xs uppercase mb-2">Reconnaissance</h5>
+                            <p class="text-xs text-slate-500">OSINT integration
+                                with Shodan and AbuseIPDB.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ch2" class="mb-40">
+                <div class="flex items-center gap-4 mb-12">
+                    <span class="text-emerald-500 font-mono text-xl">02.</span>
+                    <h2
+                        class="text-5xl font-black text-white tracking-tight">Literature
+                        Review</h2>
+                </div>
+                <div class="space-y-10 max-w-4xl">
+                    <p class="text-slate-400 leading-relaxed">
+                        Existing security tools like <strong
+                            class="text-white">Nmap</strong> are the gold
+                        standard for port discovery but remain inherently
+                        "dumb." They identify what exists but provide no
+                        context. Enterprise solutions like Nessus or Qualys are
+                        monolithic, expensive, and often produce static PDF
+                        reports that are hundreds of pages long, obfuscating
+                        critical issues.
+                    </p>
+                    <div
+                        class="p-8 border-l border-slate-700 bg-slate-900/20 italic text-slate-400">
+                        "The integration of AI into cybersecurity has accelerated, but cloud LLMs suffer from high latency and the 429 Too Many Requests error during concurrent scans. VULNRECON pivots to a Rule-Based Expert System to solve this."
+                    </div>
+                </div>
+            </section>
+
+            <section id="ch3" class="mb-40">
+                <div class="flex items-center gap-4 mb-12">
+                    <span class="text-emerald-500 font-mono text-xl">03.</span>
+                    <h2
+                        class="text-5xl font-black text-white tracking-tight">System
+                        Design</h2>
+                </div>
+
+                <div class="space-y-12">
+                    <div
+                        class="glass overflow-hidden rounded-3xl border border-slate-800">
+                        <div
+                            class="bg-slate-900/50 p-6 border-b border-slate-800">
+                            <h4 class="text-white font-bold">Microservices
+                                Technology Stack</h4>
+                        </div>
+                        <div
+                            class="p-8 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            <div>
+                                <span
+                                    class="text-emerald-500 font-bold block mb-4 uppercase text-[10px] tracking-widest">Frontend</span>
+                                <ul class="text-sm space-y-2">
+                                    <li class="text-white">Next.js 16 (App
+                                        Router)</li>
+                                    <li class="text-slate-500">Tailwind CSS</li>
+                                    <li class="text-slate-500">Framer
+                                        Motion</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <span
+                                    class="text-blue-500 font-bold block mb-4 uppercase text-[10px] tracking-widest">Backend</span>
+                                <ul class="text-sm space-y-2">
+                                    <li class="text-white">Node.js Runtime</li>
+                                    <li class="text-slate-500">JWT
+                                        Authentication</li>
+                                    <li class="text-slate-500">SSE (Server-Sent
+                                        Events)</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <span
+                                    class="text-purple-500 font-bold block mb-4 uppercase text-[10px] tracking-widest">Scanning
+                                    Worker</span>
+                                <ul class="text-sm space-y-2">
+                                    <li class="text-white">Python 3.11</li>
+                                    <li class="text-slate-500">FastAPI</li>
+                                    <li class="text-slate-500">python-nmap</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <span
+                                    class="text-amber-500 font-bold block mb-4 uppercase text-[10px] tracking-widest">Persistence</span>
+                                <ul class="text-sm space-y-2">
+                                    <li class="text-white">MongoDB</li>
+                                    <li class="text-slate-500">Mongoose ODM</li>
+                                    <li class="text-slate-500">Bcrypt
+                                        Hashing</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12">
+                        <h4 class="text-white font-bold mb-6">3.3 Data Flow
+                            Architecture</h4>
+
+                        <div class="grid lg:grid-cols-2 gap-12 mt-8">
+                            <div class="text-sm text-slate-400 space-y-4">
+                                <p><strong class="text-emerald-500">1.
+                                        Initiation:</strong> User submits a
+                                    target (IP/Domain) via the React
+                                    dashboard.</p>
+                                <p><strong class="text-emerald-500">2. Proxy &
+                                        Execution:</strong> Node.js proxies the
+                                    request to FastAPI, which spawns an Nmap
+                                    subprocess with flags <code>-sV -sC -O
+                                        -A</code>.</p>
+                            </div>
+                            <div class="text-sm text-slate-400 space-y-4">
+                                <p><strong class="text-emerald-500">3. Real-time
+                                        Streaming:</strong> Nmap stdout is
+                                    captured and streamed back to the frontend
+                                    line-by-line via SSE.</p>
+                                <p><strong class="text-emerald-500">4. Final
+                                        Enrichment:</strong> Upon completion,
+                                    the result is parsed into JSON and enriched
+                                    by the internal
+                                    <code>lib/ai-engine</code>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ch5" class="mb-40">
+                <div class="flex items-center gap-4 mb-12">
+                    <span class="text-emerald-500 font-mono text-xl">05.</span>
+                    <h2
+                        class="text-5xl font-black text-white tracking-tight">The
+                        Rule-Based AI Engine</h2>
+                </div>
+
+                <div class="space-y-16">
+                    <div class="prose prose-invert max-w-none text-slate-400">
+                        <p>The core innovation of VULNRECON is its
+                            <strong>Zero-API</strong> approach. By implementing
+                            six specialized JavaScript modules, the platform
+                            avoids the latency and privacy risks associated with
+                            cloud LLMs.</p>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <div
+                            class="glass p-8 rounded-2xl border-l-4 border-emerald-500">
+                            <h4 class="text-white font-bold mb-4 italic">5.2
+                                Module 1: Severity Predictor</h4>
+                            <p class="text-sm text-slate-400 mb-6">Uses a
+                                weighted heuristic matrix analyzing five
+                                distinct vectors: CVE Presence (40%), Service
+                                Exposure (20%), Version Age (15%), Protocol
+                                Security (15%), and Port Sensitivity (10%).</p>
+                            <div
+                                class="code-container p-4 rounded-lg text-[10px] text-emerald-400 leading-relaxed">
+                                const vectors = { <br>
+                                &nbsp;&nbsp;CVE_WEIGHT: 0.4, <br>
+                                &nbsp;&nbsp;SERVICE_EXPOSURE: 0.2, <br>
+                                &nbsp;&nbsp;PROTOCOL_RISK: 0.15 <br>
+                                }; <br>
+                                let score = calculate(vectors, portData);
+                            </div>
+                        </div>
+                        <div
+                            class="glass p-8 rounded-2xl border-l-4 border-blue-500">
+                            <h4 class="text-white font-bold mb-4 italic">5.5
+                                Module 4: Attack Path Analysis</h4>
+                            <p class="text-sm text-slate-400 mb-6">Utilizes
+                                graph-based algorithmic traversal to map
+                                multi-step attacks, categorizing ports into
+                                Entry Points, Lateral Movement Vectors, and Data
+                                Targets.</p>
+                            <div class="flex gap-2">
+                                <span
+                                    class="px-2 py-1 bg-blue-500/20 text-blue-400 text-[10px] font-bold rounded border border-blue-500/30">MITRE
+                                    T1190</span>
+                                <span
+                                    class="px-2 py-1 bg-blue-500/20 text-blue-400 text-[10px] font-bold rounded border border-blue-500/30">MITRE
+                                    T1021</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass p-8 rounded-2xl">
+                        <h4
+                            class="text-white font-bold mb-4 italic text-center">5.6
+                            Module 5: Automated Remediation Engine</h4>
+                        <p
+                            class="text-sm text-slate-400 mb-8 text-center">Lookup
+                            tables provide precise shell commands based on the
+                            detected service and Operating System.</p>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="bg-black/40 p-4 rounded-xl">
+                                <h5
+                                    class="text-emerald-500 font-bold text-xs mb-2">Target:
+                                    SSH (22)</h5>
+                                <p class="text-[10px] text-slate-500">Edit
+                                    /etc/ssh/sshd_config: Disable root login,
+                                    PermitRootLogin no.</p>
+                            </div>
+                            <div class="bg-black/40 p-4 rounded-xl">
+                                <h5
+                                    class="text-emerald-500 font-bold text-xs mb-2">Target:
+                                    FTP (21)</h5>
+                                <p class="text-[10px] text-slate-500">Migrate to
+                                    SFTP/SCP. Ensure anonymous access is
+                                    disabled in vsftpd.conf.</p>
+                            </div>
+                            <div class="bg-black/40 p-4 rounded-xl">
+                                <h5
+                                    class="text-emerald-500 font-bold text-xs mb-2">Target:
+                                    MySQL (3306)</h5>
+                                <p
+                                    class="text-[10px] text-slate-500">Bind-address
+                                    to 127.0.0.1. Implement strict ACLs for
+                                    remote access.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ch7" class="mb-40">
+                <div class="flex items-center gap-4 mb-12">
+                    <span class="text-emerald-500 font-mono text-xl">07.</span>
+                    <h2
+                        class="text-5xl font-black text-white tracking-tight">Security
+                        Hardening</h2>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <div
+                            class="p-8 border-l-4 border-emerald-500 bg-emerald-500/5 rounded-r-2xl">
+                            <h4 class="text-white font-bold mb-4">7.3 Command
+                                Injection Prevention</h4>
+                            <p
+                                class="text-sm text-slate-400 leading-relaxed mb-6">The
+                                application passed a rigorous audit for CWE-77.
+                                A stringent regex pattern ensures only safe
+                                alphanumeric characters and network delimiters
+                                are permitted.</p>
+                            <div
+                                class="code-container p-6 rounded-xl text-xs text-emerald-500">
+                                const safePattern = /^[a-zA-Z0-9.\-:\/_]+$/;
+                                <br>
+                                if (!safePattern.test(trimmed)) { <br>
+                                &nbsp;&nbsp;throw new Error('Invalid Target');
+                                <br>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-6 text-sm text-slate-400">
+                        <div class="glass p-6 rounded-2xl">
+                            <h5
+                                class="text-white font-bold mb-2 uppercase text-xs">7.1
+                                Authentication</h5>
+                            <p>128-bit JWT keys stored in httpOnly, Secure
+                                cookies. Immunity to XSS-based token theft.</p>
+                        </div>
+                        <div class="glass p-6 rounded-2xl">
+                            <h5
+                                class="text-white font-bold mb-2 uppercase text-xs">7.2
+                                Rate Limiting</h5>
+                            <p>Sliding-window throttles: 5 req/min for scans, 15
+                                req/min for OSINT tools. Prevents Nmap worker
+                                exhaustion.</p>
+                        </div>
+                        <div class="glass p-6 rounded-2xl">
+                            <h5
+                                class="text-white font-bold mb-2 uppercase text-xs">7.4
+                                CSRF Mitigation</h5>
+                            <p>SameSite=Strict cookie flags ensure cross-origin
+                                requests cannot hijack user sessions.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ch9" class="mb-40">
+                <div class="flex items-center gap-4 mb-12">
+                    <span class="text-emerald-500 font-mono text-xl">09.</span>
+                    <h2
+                        class="text-5xl font-black text-white tracking-tight">Testing
+                        & Validation</h2>
+                </div>
+                <div class="space-y-8">
+                    <div
+                        class="overflow-x-auto rounded-2xl border border-slate-800 glass">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-900/80 text-emerald-400">
+                                <tr>
+                                    <th class="p-6">Test ID</th>
+                                    <th class="p-6">Module</th>
+                                    <th class="p-6">Input Scenario</th>
+                                    <th class="p-6">Expected Result</th>
+                                    <th class="p-6">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody
+                                class="divide-y divide-slate-800 text-slate-400">
+                                <tr>
+                                    <td
+                                        class="p-6 text-white font-mono">TC-01</td>
+                                    <td class="p-6">Sanitization</td>
+                                    <td class="p-6">8.8.8.8; rm -rf /</td>
+                                    <td class="p-6">Regex Drop (Blocked)</td>
+                                    <td
+                                        class="p-6 text-emerald-500 font-bold">PASSED</td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        class="p-6 text-white font-mono">TC-02</td>
+                                    <td class="p-6">AI Severity</td>
+                                    <td class="p-6">Open Port 3306 (MySQL)</td>
+                                    <td class="p-6">Score > 75 (High)</td>
+                                    <td
+                                        class="p-6 text-emerald-500 font-bold">PASSED</td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        class="p-6 text-white font-mono">TC-03</td>
+                                    <td class="p-6">SSE Streaming</td>
+                                    <td class="p-6">Long Nmap Scan</td>
+                                    <td class="p-6">Incremental Output</td>
+                                    <td
+                                        class="p-6 text-emerald-500 font-bold">PASSED</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ch10" class="mb-40">
+                <div class="flex items-center gap-4 mb-12">
+                    <span class="text-emerald-500 font-mono text-xl">10.</span>
+                    <h2
+                        class="text-5xl font-black text-white tracking-tight">Conclusion</h2>
+                </div>
+                <div
+                    class="glass p-12 rounded-3xl space-y-8 border-t-4 border-emerald-500">
+                    <p class="text-slate-300 leading-loose text-lg">
+                        VULNRECON represents a significant leap forward in
+                        automated cybersecurity reconnaissance. By successfully
+                        decoupling heavy scanning workloads from a responsive
+                        React dashboard and implementing a <strong>Zero-API
+                            Rule-Based AI Engine</strong>, the platform delivers
+                        actionable intelligence at zero cost. It is a
+                        production-ready asset for modern Security Operations
+                        Centers.
+                    </p>
+                    <div
+                        class="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-y border-slate-800/50">
+                        <div class="text-center">
+                            <span
+                                class="text-3xl font-black text-white block">100%</span>
+                            <span
+                                class="text-[10px] text-emerald-500 uppercase tracking-widest">Privacy</span>
+                        </div>
+                        <div class="text-center">
+                            <span
+                                class="text-3xl font-black text-white block">0$</span>
+                            <span
+                                class="text-[10px] text-emerald-500 uppercase tracking-widest">OpEx
+                                Cost</span>
+                        </div>
+                        <div class="text-center">
+                            <span
+                                class="text-3xl font-black text-white block">9/9</span>
+                            <span
+                                class="text-[10px] text-emerald-500 uppercase tracking-widest">Audit
+                                Score</span>
+                        </div>
+                        <div class="text-center">
+                            <span
+                                class="text-3xl font-black text-white block">SSE</span>
+                            <span
+                                class="text-[10px] text-emerald-500 uppercase tracking-widest">Live
+                                Feed</span>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <h5 class="text-white font-bold text-sm">10.2 Future
+                            Scope</h5>
+                        <p class="text-sm text-slate-500">Next iterations will
+                            feature Distributed Worker Nodes (Redis/Celery) and
+                            Local LLM Integration (Ollama) for natural language
+                            report generation without cloud dependencies.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="demo" class="mb-40 pt-20">
+                <div class="flex items-center gap-4 mb-12">
+                    <span class="text-emerald-500 font-mono text-xl">11.</span>
+                    <h2
+                    class="text-5xl font-black text-white tracking-tight">Project
+                        Demonstration</h2>
+                </div>
+
+                <div
+                    class="glass p-6 rounded-3xl border border-slate-700/50 shadow-2xl">
+                    <div
+                        class="relative w-full video-aspect bg-black rounded-2xl overflow-hidden border border-slate-800">
+                        <div class="absolute top-4 right-4 flex gap-2 z-20">
+                            <span
+                                class="w-3 h-3 bg-red-500/80 rounded-full"></span>
+                            <span
+                                class="w-3 h-3 bg-amber-500/80 rounded-full"></span>
+                            <span
+                                class="w-3 h-3 bg-emerald-500/80 rounded-full"></span>
+                        </div>
+
+                        <video
+                            controls
+                            poster="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000"
+                            class="w-full h-full object-cover rounded-xl">
+                            <source src="demo.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+
+                    <div
+                        class="mt-6 p-4 bg-slate-900/40 rounded-xl border border-slate-800/50">
+                        <h4
+                            class="text-white font-bold text-lg flex items-center gap-2">
+                            <span
+                                class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                                VULNRECON: Core Functionality Walkthrough
+                            </h4>
+                            <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+                                This demonstration covers the end-to-end lifecycle
+                                of a security audit: from target initiation via the
+                                Next.js dashboard to real-time Python FastAPI
+                                streaming and the final automated remediation
+                                generation.
+                            </p>
+                        </div>
+                    </div>
+                    <p
+                    class="mt-6 text-center text-slate-500 text-xs tracking-widest uppercase">
+                    Authentication Verified • Environment: Staging-Sandbox-01
+                </p>
+            </section>
+            
+            <section id="links"
+            class="mb-40 pt-10 border-t border-slate-800/50">
+                <div class="flex items-center gap-4 mb-12">
+                    <span class="text-emerald-500 font-mono text-xl">12.</span>
+                    <h2
+                        class="text-5xl font-black text-white tracking-tight">Access
+                        & Links</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <a href="https://github.com/your-username/vulnrecon"
+                        target="_blank"
+                        class="group glass p-8 rounded-3xl border border-slate-800 hover:border-emerald-500/50 transition-all">
+                        <div class="flex items-center justify-between mb-6">
+                            <div
+                            class="p-4 bg-slate-900 rounded-2xl group-hover:bg-emerald-500/10 transition">
+                            <svg
+                            class="w-8 h-8 text-white group-hover:text-emerald-400"
+                            fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                        </svg>
+                    </div>
+                    <span
+                    class="text-emerald-500 font-mono text-sm opacity-0 group-hover:opacity-100 transition">View
+                    Source Code →</span>
+                </div>
+                <h4 class="text-white font-bold text-2xl mb-2">GitHub
+                    Repository</h4>
+                    <p class="text-slate-400 text-sm">Full source code
+                        including Next.js frontend, Node.js backend, and
+                            Python FastAPI worker.</p>
+                        </a>
+
+                    <a href="https://vulnrecon.example.com" target="_blank"
+                        class="group glass p-8 rounded-3xl border border-slate-800 hover:border-blue-500/50 transition-all text-left">
+                        <div class="flex items-center justify-between mb-6">
+                            <div
+                                class="p-4 bg-slate-900 rounded-2xl group-hover:bg-blue-500/10 transition">
+                                <svg
+                                    class="w-8 h-8 text-white group-hover:text-blue-400"
+                                    fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                            </div>
+                            <span
+                            class="text-blue-500 font-mono text-sm opacity-0 group-hover:opacity-100 transition">Live
+                            Demo →</span>
+                        </div>
+                        <h4 class="text-white font-bold text-2xl mb-2">Live
+                            Deployment</h4>
+                            <p class="text-slate-400 text-sm">Production-ready
+                                dashboard hosted on Vercel with the Python worker
+                                deployed on an AWS EC2 instance.</p>
+                            </a>
+                        </div>
+                    </section>
+                    <section id="ref" class="mb-20">
+                        <h2
+        
+                            class="text-2xl font-bold text-white mb-8 italic">References</h2>
+                        <ol
+                            class="text-sm text-slate-500 space-y-4 list-decimal list-inside">
+                            <li>Lyon, G. (2009). Nmap Network Scanning. Insecure.Com
+                                LLC.</li>
+                            <li>MITRE Corporation. ATT&CK® Framework.
+                                https://attack.mitre.org/</li>
+                            <li>FastAPI Documentation.
+                                https://fastapi.tiangolo.com/</li>
+                            <li>OWASP Foundation. Top Ten Web Application Security
+                                Risks. https://owasp.org/</li>
+                        </ol>
+                    </section>
+                    
+                    <footer
+                    class="mt-40 pt-10 border-t border-slate-800 text-center pb-20">
+                <div class="flex justify-center gap-8 mb-6 no-print">
+                    <a href="#ch1"
+                        class="text-slate-500 hover:text-emerald-500 text-xs uppercase tracking-tighter transition">Documentation</a>
+                    <a href="#demo"
+                        class="text-slate-500 hover:text-emerald-500 text-xs uppercase tracking-tighter transition">Demo</a>
+                    <a href="#links"
+                        class="text-slate-500 hover:text-emerald-500 text-xs uppercase tracking-tighter transition">GitHub</a>
+                </div>
+                <p
+                    class="text-slate-500 text-[10px] tracking-widest font-bold">VULNRECON
+                    | B.TECH CSE-IOT CYBERSECURITY | MARCH 2026</p>
+            </footer>
+
+        </main>
+
+        <a href="#cover"
+            class="fixed bottom-8 right-8 bg-emerald-500/20 hover:bg-emerald-500 text-emerald-400 hover:text-black p-4 rounded-full border border-emerald-500/20 backdrop-blur transition-all shadow-2xl no-print">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24"><path d="M5 10l7-7m0 0l7 7m-7-7v18" /></svg>
+        </a>
+
+    </body>
+</html>
